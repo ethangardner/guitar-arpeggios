@@ -1,53 +1,260 @@
 <!doctype html>
 <html>
-<head>
-	<title>Guitar Arpeggio Visualizer</title>
-	<link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
-	<script type="text/javascript">
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-3363316-1']);
-		_gaq.push(['_trackPageview']);
-	
-		(function() {
-			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-		})();
-	
-	</script>
-</head>
-<body>
-	<h1 contenteditable="true">Guitar Arpeggio Visualizer</h1>
-	<div id="fretboard"></div>
-	<div class="content">
-		<form id="diagram">
-			<p><label><input type="checkbox" name="notes" value="A"> A</label></p>
-			<p><label><input type="checkbox" name="notes" value="A#"> A#/Bb</label></p>
-			<p><label><input type="checkbox" name="notes" value="B"> B</label></p>
-			<p><label><input type="checkbox" name="notes" value="C"> C</label></p>
-			<p><label><input type="checkbox" name="notes" value="C#"> C#/Db</label></p>
-			<p><label><input type="checkbox" name="notes" value="D"> D</label></p>
-			<p><label><input type="checkbox" name="notes" value="D#"> D#/Eb</label></p>
-			<p><label><input type="checkbox" name="notes" value="E"> E</label></p>
-			<p><label><input type="checkbox" name="notes" value="F"> F</label></p>
-			<p><label><input type="checkbox" name="notes" value="F#"> F#/Gb</label></p>
-			<p><label><input type="checkbox" name="notes" value="G"> G</label></p>
-			<p><label><input type="checkbox" name="notes" value="G#"> G#/Ab</label></p>
-		</form>
-		<ul class="controls">
-			<li><a id="draw" class="btn">Draw Markers</a></li>
-			<li><a id="reset" class="btn">Clear All Markers</a></li>
-		</ul>
-	</div>
-	<footer>
-		<p>Created by <a href="http://www.ethangardner.com/">Ethan Gardner</a> for the article, 
-			<a href="http://www.ethangardner.com/articles/drawing-with-raphael-js-plus-a-bonus-for-guitar-players/">
-				Drawing with Raphael JS, Plus a Bonus for Guitar Players
-			</a>
-		</p>
-	</footer>
-<script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js"></script>
-<script src="scripts/raphael.min.js"></script>
-<script src="scripts/notes.js"></script>
-</body>	
+  <head>
+    <title>Guitar Arpeggio Visualizer</title>
+    <link rel="stylesheet" href="styles/style.css" type="text/css" media="screen" />
+    <script type="text/javascript">
+     var _gaq = _gaq || [];
+     _gaq.push(['_setAccount', 'UA-3363316-1']);
+     _gaq.push(['_trackPageview']);
+
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+
+    </script>
+  </head>
+  <body>
+    <h1 contenteditable="true">Guitar Arpeggio Visualizer</h1>
+    <div id="guitar-neck">
+      <svg height="300" width="1300" viewBox="300 1300" xmlns="http://www.w3.org/2000/svg">
+        <g class="fretboard">
+          <rect x="50" y="10" width="1200" height="275" r="0" rx="0" ry="0" fill="#FFFFFF"></rect>
+        </g>
+        <g class="frets">
+          <rect x="100" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="150" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="200" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="250" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="300" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="350" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="400" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="450" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="500" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="550" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="600" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="650" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="700" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="750" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="800" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="850" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="900" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="950" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="1000" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="1050" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="1100" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="1150" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="1200" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+          <rect x="1250" y="10" width="5" height="275" r="0" rx="0" ry="0" fill="#000000"></rect>
+        </g>
+        <g class="strings">
+          <rect x="50" y="20" width="1200" height="5" r="0" rx="0" ry="0" fill="#dddddd" stroke="#000"></rect>
+          <rect x="50" y="70" width="1200" height="5" r="0" rx="0" ry="0" fill="#dddddd" stroke="#000"></rect>
+          <rect x="50" y="120" width="1200" height="5" r="0" rx="0" ry="0" fill="#dddddd" stroke="#000"></rect>
+          <rect x="50" y="170" width="1200" height="5" r="0" rx="0" ry="0" fill="#dddddd" stroke="#000"></rect>
+          <rect x="50" y="220" width="1200" height="5" r="0" rx="0" ry="0" fill="#dddddd" stroke="#000"></rect>
+          <rect x="50" y="270" width="1200" height="5" r="0" rx="0" ry="0" fill="#dddddd" stroke="#000"></rect>
+        </g>
+        <g class="inlay">
+          <circle cx="175" cy="147" r="10" fill="#dd0000" stroke="#000"></circle>
+          <circle cx="275" cy="147" r="10" fill="#dd0000" stroke="#000"></circle>
+          <circle cx="375" cy="147" r="10" fill="#dd0000" stroke="#000"></circle>
+          <circle cx="475" cy="147" r="10" fill="#dd0000" stroke="#000"></circle>
+          <circle cx="625" cy="47" r="10" fill="#dd0000" stroke="#000"></circle>
+          <circle cx="625" cy="247" r="10" fill="#dd0000" stroke="#000"></circle>
+          <circle cx="775" cy="147" r="10" fill="#dd0000" stroke="#000"></circle>
+          <circle cx="875" cy="147" r="10" fill="#dd0000" stroke="#000"></circle>
+          <circle cx="975" cy="147" r="10" fill="#dd0000" stroke="#000"></circle>
+          <circle cx="1075" cy="147" r="10" fill="#dd0000" stroke="#000"></circle>
+          <circle cx="1225" cy="47" r="10" fill="#dd0000" stroke="#000"></circle>
+          <circle cx="1225" cy="247" r="10" fill="#dd0000" stroke="#000"></circle>
+        </g>
+        <g class="position-markers">
+          <circle cx="25" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="75" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="125" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="175" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="225" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="275" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="325" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="375" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="425" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="475" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="525" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="575" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="625" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="675" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="725" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="775" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="825" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="875" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="925" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="975" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1025" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1075" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1125" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1175" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1225" cy="22" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="25" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="75" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="125" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="175" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="225" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="275" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="325" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="375" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="425" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="475" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="525" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="575" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="625" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="675" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="725" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="775" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="825" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="875" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="925" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="975" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1025" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1075" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1125" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1175" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1225" cy="72" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="25" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="75" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="125" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="175" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="225" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="275" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="325" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="375" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="425" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="475" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="525" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="575" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="625" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="675" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="725" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="775" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="825" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="875" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="925" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="975" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1025" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1075" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1125" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1175" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1225" cy="122" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="25" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="75" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="125" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="175" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="225" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="275" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="325" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="375" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="425" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="475" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="525" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="575" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="625" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="675" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="725" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="775" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="825" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="875" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="925" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="975" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1025" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1075" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1125" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1175" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1225" cy="172" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="25" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="75" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="125" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="175" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="225" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="275" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="325" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="375" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="425" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="475" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="525" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="575" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="625" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="675" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="725" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="775" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="825" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="875" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="925" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="975" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1025" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1075" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1125" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1175" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1225" cy="222" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="25" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="75" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="125" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="175" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="225" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="275" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="325" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="375" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="425" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="475" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="525" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="575" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="625" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="675" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="725" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="775" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="825" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="875" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="925" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="975" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1025" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1075" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1125" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1175" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+          <circle cx="1225" cy="272" r="15" fill="#ffffff" stroke="#000"></circle>
+        </g>
+      </svg>
+
+    </div>
+    <div class="content">
+      <form id="diagram">
+        <p><label><input type="checkbox" name="notes" value="A"> A</label></p>
+        <p><label><input type="checkbox" name="notes" value="A#"> A#/Bb</label></p>
+        <p><label><input type="checkbox" name="notes" value="B"> B</label></p>
+        <p><label><input type="checkbox" name="notes" value="C"> C</label></p>
+        <p><label><input type="checkbox" name="notes" value="C#"> C#/Db</label></p>
+        <p><label><input type="checkbox" name="notes" value="D"> D</label></p>
+        <p><label><input type="checkbox" name="notes" value="D#"> D#/Eb</label></p>
+        <p><label><input type="checkbox" name="notes" value="E"> E</label></p>
+        <p><label><input type="checkbox" name="notes" value="F"> F</label></p>
+        <p><label><input type="checkbox" name="notes" value="F#"> F#/Gb</label></p>
+        <p><label><input type="checkbox" name="notes" value="G"> G</label></p>
+        <p><label><input type="checkbox" name="notes" value="G#"> G#/Ab</label></p>
+      </form>
+      <ul class="controls">
+        <li><a id="draw" class="btn">Draw Markers</a></li>
+        <li><a id="reset" class="btn">Clear All Markers</a></li>
+      </ul>
+    </div>
+    <footer>
+      <p>Created by <a href="http://www.ethangardner.com/">Ethan Gardner</a> for the article,
+        <a href="http://www.ethangardner.com/articles/drawing-with-raphael-js-plus-a-bonus-for-guitar-players/">
+          Drawing with Raphael JS, Plus a Bonus for Guitar Players
+        </a>
+      </p>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.1/mootools-yui-compressed.js"></script>
+    <script src="scripts/raphael.min.js"></script>
+    <script src="scripts/notes.js"></script>
+  </body>
 </html>

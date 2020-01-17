@@ -1,0 +1,20 @@
+{
+  "name": "guitar-arpeggios",
+  "version": "1.0.0",
+  "description": "Visualize guitar arpeggios",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ethangardner@bitbucket.org/ethangardner/guitar-arpeggios.git"
+  },
+  "author": "Ethan Gardner",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/ethangardner/guitar-arpeggios#readme"
+}

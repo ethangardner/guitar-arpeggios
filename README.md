@@ -1,1 +1,1 @@
-A guitar note visualizer using MooTools and Raphael JS.
+A guitar note visiualizer

@@ -1,0 +1,30 @@
+# Based on https://develop.svn.wordpress.org/trunk/.editorconfig
+
+# This file is for unifying the coding style for different editors and IDEs
+# editorconfig.org
+
+# WordPress Coding Standards
+# https://make.wordpress.org/core/handbook/coding-standards/
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = tab
+
+[{.jshintrc,*.json,*.yml,*.yaml,*.scss,*.lock,*.js,*.html,*.htm,*.css}]
+indent_style = space
+indent_size = 2
+
+[{*.txt,wp-config-sample.php}]
+end_of_line = crlf
+
+[{phpunit.xml.dist,composer.{json,lock}}]
+indent_style = space
+indent_size = 4
+
+[*.md,*.markdown]
+trim_trailing_whitespace = false
