@@ -1,101 +1,31 @@
 /**
 * Begin core styling
 */
+html {
+  font-size: 62.5%;
+}
+
 body {
   background: white;
   color: black;
-  font: 62.5% cambria, georgia, 'Times New Roman', Times, serif;
+  font: 1.8rem cambria, georgia, 'Times New Roman', Times, serif;
   text-align: center;
   padding: 5px;
-}
-
-h1 {
-  font: 35px/1.143 'Franklin Gothic Medium', Tahoma, 'Helvetica Neue', Arial,
-    sans-serif;
-}
-
-h2 {
-  font: 30px/1.167 'Franklin Gothic Medium', Tahoma, 'Helvetica Neue', Arial,
-    sans-serif;
-}
-
-h3 {
-  font: 25px/1.2 'Franklin Gothic Medium', Tahoma, 'Helvetica Neue', Arial,
-    sans-serif;
-}
-
-h4 {
-  font: 20px/1.25 'Franklin Gothic Medium', Tahoma, 'Helvetica Neue', Arial,
-    sans-serif;
-}
-
-h5 {
-  font: 18px/1.389 'Franklin Gothic Medium', Tahoma, 'Helvetica Neue', Arial,
-    sans-serif;
-}
-
-h6 {
-  font: 16px/1.125 'Franklin Gothic Medium', Tahoma, 'Helvetica Neue', Arial,
-    sans-serif;
 }
 
 ul,
 ol,
 dl,
 p {
-  font-size: 18px;
   line-height: 1.389;
-  margin-bottom: 1em;
-}
-
-dd,
-dt,
-li,
-label {
-  font-size: 18px;
-  line-height: 1.389;
+  margin: 0 0 1rem 0;
 }
 
 a {
-  color: #0b1272;
+  color: #068a9c;
+  text-decoration: none;
 }
+
 a:hover {
-  color: black;
   text-decoration: underline;
-}
-a:visited {
-  color: #0b1272;
-}
-a:focus {
-  text-shadow: 0 0 5px black;
-}
-
-/**
-* Forms
-*/
-form {
-  margin-bottom: 1.389;
-  padding: 5px 0;
-  -moz-column-count: 2;
-  -webkit-column-count: 2;
-  column-count: 2;
-}
-
-fieldset {
-  border: 1px solid #e6e6ff;
-  padding: 5px;
-  margin-bottom: 18px;
-}
-
-legend {
-  font-size: 18px;
-  padding: 5px;
-}
-
-.e-string circle,
-.a-string circle,
-.d-string circle,
-.g-string circle,
-.b-string circle {
-  display: none;
 }

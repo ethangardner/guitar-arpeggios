@@ -1,0 +1,30 @@
+.controls {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.control__list {
+  display: grid;
+  grid-template-columns: repeat( auto-fit, minmax(100px, 1fr) );
+  grid-gap: 10px;
+  list-style: none;
+  margin: 0 0 2rem 0;
+  padding: 0;
+}
+
+.control__list-item a {
+  background: #ecf4fb;
+  color: #068a9c;
+  display: block;
+  font-size: 2rem;
+  padding: 10px;
+}
+
+.control__list-item a:hover {
+  text-decoration: none;
+}
+
+.control__list-item .is-active {
+  background: #068a9c;
+  color: #fff;
+}
