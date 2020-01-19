@@ -1,5 +1,7 @@
-console.log('from the worker file');
+let data = [];
 
-self.onmessage = ({ data: { text } }) => {
-  self.postMessage({ text: text + text });
-};
+self.addEventListener('message', function(e) {
+  data.push(e.data);
+  self.postMessage(e.data);
+  console.log(data);
+}, false);
