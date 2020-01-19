@@ -5,3 +5,11 @@
 .b-string circle {
   display: none;
 }
+
+.e-string .is-visible,
+.a-string .is-visible,
+.d-string .is-visible,
+.g-string .is-visible,
+.b-string .is-visible {
+  display: block;
+}
