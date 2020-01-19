@@ -19,10 +19,10 @@ const main = () => {
   if (window.Worker) {
     const worker = new Worker();
     const form = document.querySelector('.controls__form');
-    let data = [];
+    let selectedNotes = [];
 
     worker.addEventListener('message', function(e) {
-      data = e.data;
+      selectedNotes = e.data;
     }, false);
 
     document.querySelector('.control__list').addEventListener('click', (e) => {
@@ -45,13 +45,17 @@ const main = () => {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       clearVisible();
-      let notes = data.map(item => {
+      let notes = selectedNotes.map(item => {
         return '.' + item;
-      })
-      document.querySelectorAll(notes.join(', ')).forEach(item => {
-        item.classList.add(visibleClassName);
-      })
-      console.log(data);
+      });
+
+      if (notes.length > 0) {
+        document.querySelectorAll(notes.join(', ')).forEach(item => {
+          item.classList.add(visibleClassName);
+        });
+      }
+
+      console.log(selectedNotes);
 
     }, false);
   }
