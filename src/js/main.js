@@ -1,62 +1,81 @@
 import Worker from '../worker';
 const activeClassName = 'is-active';
 const visibleClassName = 'is-visible';
+let worker;
+let selectedNotes = [];
+
+if (window.Worker) {
+  worker = new Worker();
+}
 
 const clearVisible = () => {
   document.querySelectorAll('.is-visible').forEach(item => {
     item.classList.remove(visibleClassName);
-  })
+  });
 };
 
-const handleClear = () => {
+const handleClear = (e) => {
+  selectedNotes = [];
   document.querySelectorAll('.is-visible, .is-active').forEach(item => {
     item.classList.remove(activeClassName);
     item.classList.remove(visibleClassName);
-  })
+  });
+  worker.postMessage({
+    'type': 'reset',
+    'value': selectedNotes
+  });
+};
+
+const handleNoteSelect = (e) => {
+  e.preventDefault();
+  if (e.target.matches('a')) {
+    worker.postMessage({
+      type: 'change',
+      value: e.target.getAttribute('data-note')
+    }); // Send data to our worker.
+
+    if(e.target.classList.contains(activeClassName)) {
+      e.target.classList.remove(activeClassName);
+    } else {
+      e.target.classList.add(activeClassName);
+    }
+  }
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  clearVisible();
+
+  console.log(selectedNotes);
+  let notes = selectedNotes.map(item => {
+    return '.' + item;
+  });
+
+  if (notes.length > 0) {
+    document.querySelectorAll(notes.join(', ')).forEach(item => {
+      item.classList.add(visibleClassName);
+    });
+  }
 };
 
 const main = () => {
   if (window.Worker) {
-    const worker = new Worker();
     const form = document.querySelector('.controls__form');
-    let selectedNotes = [];
 
-    worker.addEventListener('message', function(e) {
+    worker.addEventListener('message', (e) => {
       selectedNotes = e.data;
     }, false);
 
     document.querySelector('.control__list').addEventListener('click', (e) => {
-      e.preventDefault();
-      if (e.target.matches('a')) {
-        worker.postMessage({
-          type: 'change',
-          value: e.target.getAttribute('data-note')
-        }); // Send data to our worker.
-
-        if(e.target.classList.contains(activeClassName)) {
-          e.target.classList.remove(activeClassName);
-        } else {
-          e.target.classList.add(activeClassName);
-        }
-      }
+      return handleNoteSelect(e);
     });
 
+    form.addEventListener('submit', (e) => {
+      return handleSubmit(e);
+    }, false);
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      clearVisible();
-      let notes = selectedNotes.map(item => {
-        return '.' + item;
-      });
-
-      if (notes.length > 0) {
-        document.querySelectorAll(notes.join(', ')).forEach(item => {
-          item.classList.add(visibleClassName);
-        });
-      }
-
-      console.log(selectedNotes);
-
+    form.addEventListener('reset', (e) => {
+      return handleClear(e);
     }, false);
   }
 };

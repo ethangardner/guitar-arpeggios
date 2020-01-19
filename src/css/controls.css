@@ -21,10 +21,31 @@
 }
 
 .control__list-item a:hover {
+  background: #dde5ec;
+  color: #068a9c;
   text-decoration: none;
 }
 
 .control__list-item .is-active {
   background: #068a9c;
   color: #fff;
+}
+
+.control__list-item a:hover.is-active {
+  background: #06758c;
+  color: #fff;
+}
+
+.controls button {
+  background: #069C63;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+
+.controls button:hover,
+.controls button:focus,
+.controls button:active {
+  background: #05784C;
 }

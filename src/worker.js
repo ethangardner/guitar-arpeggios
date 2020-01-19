@@ -12,10 +12,18 @@ const handleChange = (e) => {
   return data;
 };
 
+const handleReset = (e) => {
+  data = e.data.value;
+  return data;
+}
+
 self.addEventListener('message', function(e) {
   switch (e.data.type) {
     case 'change':
       handleChange(e);
+      break;
+    case 'reset':
+      handleReset(e);
       break;
   }
 

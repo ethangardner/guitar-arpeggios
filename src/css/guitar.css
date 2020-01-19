@@ -13,3 +13,7 @@
 .b-string .is-visible {
   display: block;
 }
+
+.guitar-neck {
+  margin-bottom: 10px;
+}
