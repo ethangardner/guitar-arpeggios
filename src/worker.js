@@ -1,6 +1,6 @@
 let data = [];
 
-const handleChange = (e) => {
+const handleChange = e => {
   if (data.includes(e.data.value)) {
     data = data.filter(item => {
       return item !== e.data.value;
@@ -12,20 +12,24 @@ const handleChange = (e) => {
   return data;
 };
 
-const handleReset = (e) => {
+const handleReset = e => {
   data = e.data.value;
   return data;
-}
+};
 
-self.addEventListener('message', function(e) {
-  switch (e.data.type) {
-    case 'change':
-      handleChange(e);
-      break;
-    case 'reset':
-      handleReset(e);
-      break;
-  }
+self.addEventListener(
+  'message',
+  function(e) {
+    switch (e.data.type) {
+      case 'change':
+        handleChange(e);
+        break;
+      case 'reset':
+        handleReset(e);
+        break;
+    }
 
-  self.postMessage(data);
-}, false);
+    self.postMessage(data);
+  },
+  false
+);

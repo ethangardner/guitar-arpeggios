@@ -14,27 +14,27 @@ const clearVisible = () => {
   });
 };
 
-const handleClear = (e) => {
+const handleClear = e => {
   selectedNotes = [];
   document.querySelectorAll('.is-visible, .is-active').forEach(item => {
     item.classList.remove(activeClassName);
     item.classList.remove(visibleClassName);
   });
   worker.postMessage({
-    'type': 'reset',
-    'value': selectedNotes
+    type: 'reset',
+    value: selectedNotes,
   });
 };
 
-const handleNoteSelect = (e) => {
+const handleNoteSelect = e => {
   e.preventDefault();
   if (e.target.matches('a')) {
     worker.postMessage({
       type: 'change',
-      value: e.target.getAttribute('data-note')
+      value: e.target.getAttribute('data-note'),
     }); // Send data to our worker.
 
-    if(e.target.classList.contains(activeClassName)) {
+    if (e.target.classList.contains(activeClassName)) {
       e.target.classList.remove(activeClassName);
     } else {
       e.target.classList.add(activeClassName);
@@ -42,7 +42,7 @@ const handleNoteSelect = (e) => {
   }
 };
 
-const handleSubmit = (e) => {
+const handleSubmit = e => {
   e.preventDefault();
   clearVisible();
 
@@ -62,21 +62,33 @@ const main = () => {
   if (window.Worker) {
     const form = document.querySelector('.controls__form');
 
-    worker.addEventListener('message', (e) => {
-      selectedNotes = e.data;
-    }, false);
+    worker.addEventListener(
+      'message',
+      e => {
+        selectedNotes = e.data;
+      },
+      false
+    );
 
-    document.querySelector('.control__list').addEventListener('click', (e) => {
+    document.querySelector('.control__list').addEventListener('click', e => {
       return handleNoteSelect(e);
     });
 
-    form.addEventListener('submit', (e) => {
-      return handleSubmit(e);
-    }, false);
+    form.addEventListener(
+      'submit',
+      e => {
+        return handleSubmit(e);
+      },
+      false
+    );
 
-    form.addEventListener('reset', (e) => {
-      return handleClear(e);
-    }, false);
+    form.addEventListener(
+      'reset',
+      e => {
+        return handleClear(e);
+      },
+      false
+    );
   }
 };
 
