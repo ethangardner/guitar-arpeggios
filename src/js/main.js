@@ -46,7 +46,6 @@ const handleSubmit = e => {
   e.preventDefault();
   clearVisible();
 
-  console.log(selectedNotes);
   let notes = selectedNotes.map(item => {
     return '.' + item;
   });

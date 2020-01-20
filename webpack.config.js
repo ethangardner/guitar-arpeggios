@@ -6,7 +6,7 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: './src/app.js',
+    app: ['./src/app.js'],
   },
   output: {
     filename: '[name].bundle.js',
@@ -32,8 +32,22 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-transform-runtime'],
+          },
+        },
+      },
+      {
         test: /worker\.js$/,
-        use: { loader: 'worker-loader' },
+        use: {
+          loader: 'worker-loader',
+          options: { inline: false, fallback: true }
+        },
       },
     ],
   },
