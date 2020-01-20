@@ -1,8 +1,9 @@
-let data = [];
+require('./js/polyfill.includes.js');
+var data = [];
 
-const handleChange = e => {
+var handleChange = function(e) {
   if (data.includes(e.data.value)) {
-    data = data.filter(item => {
+    data = data.filter(function(item) {
       return item !== e.data.value;
     });
   } else {
@@ -12,7 +13,7 @@ const handleChange = e => {
   return data;
 };
 
-const handleReset = e => {
+const handleReset = function(e) {
   data = e.data.value;
   return data;
 };
