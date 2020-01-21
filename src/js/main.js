@@ -20,6 +20,15 @@ const handleClear = e => {
     item.classList.remove(activeClassName);
     item.classList.remove(visibleClassName);
   });
+
+
+  if (typeof window.gtag !== 'undefined') {
+    gtag('event', 'clear', {
+      'event_category' : 'form',
+      'event_label' : 'guitar arpeggio'
+    });
+  }
+
   worker.postMessage({
     type: 'reset',
     value: selectedNotes,
@@ -45,6 +54,14 @@ const handleNoteSelect = e => {
 const handleSubmit = e => {
   e.preventDefault();
   clearVisible();
+
+  if (typeof window.gtag !== 'undefined') {
+    gtag('event', 'submit', {
+      'event_category' : 'form',
+      'event_label' : 'guitar arpeggio'
+    });
+  }
+
 
   let notes = selectedNotes.map(item => {
     return '.' + item;
