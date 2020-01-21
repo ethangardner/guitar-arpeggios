@@ -4,6 +4,7 @@ import './css/guitar.css';
 import './css/controls.css';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
+import './js/polyfill.classlist.js';
 import './js/polyfill.matches.js';
 
 if ('serviceWorker' in navigator) {
