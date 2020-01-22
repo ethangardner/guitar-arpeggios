@@ -16,4 +16,6 @@
 
 .guitar-neck {
   margin-bottom: 10px;
+  overflow-x: auto;
+  width: 100vw;
 }
