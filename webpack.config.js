@@ -22,8 +22,8 @@ module.exports = {
     new ManifestPlugin(),
     new AppManifestWebpackPlugin({
       logo: './src/touch-icon.png', // svg works too!
-      prefix: '/demo/guitar-arpeggios',
-      output: '/icons/',
+      prefix: '/demo/guitar-arpeggios/icons',
+      output: './icons/',
       inject: true,
       config: {
         appName: 'Guitar Arpeggio Visualizer',
