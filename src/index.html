@@ -21,7 +21,13 @@
     <main>
       <h1>Guitar Arpeggio Visualizer</h1>
       <div class="guitar-neck">
-        <svg viewBox="0 0 1300 300" width="1300" height="300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          viewBox="0 0 1300 300"
+          width="1300"
+          height="300"
+          preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <g class="fretboard">
             <rect
               x="50"
@@ -1641,27 +1647,51 @@
       <section class="controls">
         <form class="controls__form">
           <ul class="control__list">
-            <li class="control__list-item"><a href="#a" data-note="a">A</a></li>
             <li class="control__list-item">
-              <a href="#a-sharp" data-note="a-sharp">A#/Bb</a>
+              <a href="#a" class="control--a" data-note="a">A</a>
             </li>
-            <li class="control__list-item"><a href="#b" data-note="b">B</a></li>
-            <li class="control__list-item"><a href="#c" data-note="c">C</a></li>
             <li class="control__list-item">
-              <a href="#c-sharp" data-note="c-sharp">C#/Db</a>
+              <a href="#a-sharp" class="control--a-sharp" data-note="a-sharp"
+                >A#/Bb</a
+              >
             </li>
-            <li class="control__list-item"><a href="#d" data-note="d">D</a></li>
             <li class="control__list-item">
-              <a href="#d-sharp" data-note="d-sharp">D#/Eb</a>
+              <a href="#b" class="control--b" data-note="b">B</a>
             </li>
-            <li class="control__list-item"><a href="#e" data-note="e">E</a></li>
-            <li class="control__list-item"><a href="#f" data-note="f">F</a></li>
             <li class="control__list-item">
-              <a href="#f-sharp" data-note="f-sharp">F#/Gb</a>
+              <a href="#c" class="control--c" data-note="c">C</a>
             </li>
-            <li class="control__list-item"><a href="#g" data-note="g">G</a></li>
             <li class="control__list-item">
-              <a href="#g-sharp" data-note="g-sharp">G#/Ab</a>
+              <a href="#c-sharp" class="control--c-sharp" data-note="c-sharp"
+                >C#/Db</a
+              >
+            </li>
+            <li class="control__list-item">
+              <a href="#d" class="control--d" data-note="d">D</a>
+            </li>
+            <li class="control__list-item">
+              <a href="#d-sharp" class="control--d-sharp" data-note="d-sharp"
+                >D#/Eb</a
+              >
+            </li>
+            <li class="control__list-item">
+              <a href="#e" class="control--e" data-note="e">E</a>
+            </li>
+            <li class="control__list-item">
+              <a href="#f" class="control--f" data-note="f">F</a>
+            </li>
+            <li class="control__list-item">
+              <a href="#f-sharp" class="control--f-sharp" data-note="f-sharp"
+                >F#/Gb</a
+              >
+            </li>
+            <li class="control__list-item">
+              <a href="#g" class="control--g" data-note="g">G</a>
+            </li>
+            <li class="control__list-item">
+              <a href="#g-sharp" class="control--g-sharp" data-note="g-sharp"
+                >G#/Ab</a
+              >
             </li>
           </ul>
           <div class="controls__buttons">
