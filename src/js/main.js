@@ -1,4 +1,4 @@
-import Worker from '../worker';
+import Worker from '../main.worker';
 const activeClassName = 'is-active';
 const visibleClassName = 'is-visible';
 let worker;

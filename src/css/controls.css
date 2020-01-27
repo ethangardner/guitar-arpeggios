@@ -48,18 +48,15 @@
   display: block;
   font-size: 2rem;
   padding: 15px;
-  position: relative;
 }
 
 .control__list-item .degree {
   background: #1e2020;
   color: #fff;
+  display: block;
   font-family: monospace;
   font-size: 1.1rem;
-  left: 0;
   padding: 2px;
-  position: absolute;
-  top: 0;
 }
 
 .control__list-item a:hover {
