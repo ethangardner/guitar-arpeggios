@@ -1,0 +1,52 @@
+.key {
+}
+
+.key__label {
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 0 0 5px;
+}
+
+.key__nav {
+  display: block;
+  position: relative;
+  text-indent: -9999px;
+}
+
+.key__nav:focus,
+.key__nav:active {
+  outline: 0;
+}
+
+.key__current {
+  font-size: 2.8rem;
+  padding: 5px 0;
+}
+
+.key__nav--previous:after {
+	border-bottom: 14px solid #666b6f;
+	border-top: 14px solid transparent;
+	border-left: 14px solid transparent;
+	border-right: 14px solid transparent;
+  content: '';
+	display: block;
+	position: absolute;
+	left: calc(50% - 14px);
+	bottom: 0;
+	width: 0;
+	height: 0;
+}
+
+.key__nav--next:after {
+	border-top: 14px solid #666b6f;
+	border-bottom: 14px solid transparent;
+	border-left: 14px solid transparent;
+	border-right: 14px solid transparent;
+  content: '';
+	display: block;
+	position: absolute;
+	left: calc(50% - 14px);
+	top: 0;
+	width: 0;
+	height: 0;
+}

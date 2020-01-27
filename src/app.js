@@ -2,6 +2,7 @@ import 'normalize.css';
 import './css/general.css';
 import './css/guitar.css';
 import './css/controls.css';
+import './css/key.css';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import './js/polyfill.classlist.js';
@@ -21,3 +22,4 @@ if ('serviceWorker' in navigator) {
 }
 
 require('./js/main.js');
+require('./js/scale-degrees.js');
