@@ -28,6 +28,9 @@ self.addEventListener(
       case 'reset':
         handleReset(e);
         break;
+      default:
+        console.log(e.data);
+        break;
     }
 
     self.postMessage(data);

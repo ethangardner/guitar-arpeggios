@@ -1,39 +1,39 @@
-require('./js/polyfill.includes.js');
-var data = [];
+var notes = [
+  'a',
+  'a-sharp',
+  'b',
+  'c',
+  'c-sharp',
+  'd',
+  'd-sharp',
+  'e',
+  'f',
+  'f-sharp',
+  'g',
+  'g-sharp'
+];
 
-var handleChange = function(e) {
-  if (data.includes(e.data.value)) {
-    data = data.filter(function(item) {
-      return item !== e.data.value;
-    });
-  } else {
-    data.push(e.data.value);
-  }
+var handleKeyChange = function(e) {
+  e.preventDefault();
+  var position = parseInt(e.data.value, 10);
+  var notesCopy = notes.slice(0, 12);
 
-  return data;
-};
-
-const handleReset = function(e) {
-  data = e.data.value;
-  return data;
+  var notesFromKey = notesCopy.splice(position, 12).concat(notesCopy);
+  console.log(notesFromKey);
+  return notesFromKey;
 };
 
 self.addEventListener(
   'message',
   function(e) {
     switch (e.data.type) {
-      case 'change':
-        handleChange(e);
-        break;
-      case 'reset':
-        handleReset(e);
+      case 'keyChange':
+        self.postMessage(handleKeyChange(e));
         break;
       default:
-        console.log(e.data);
+        self.postMessage(e.data);
         break;
     }
-
-    self.postMessage(data);
   },
   false
 );

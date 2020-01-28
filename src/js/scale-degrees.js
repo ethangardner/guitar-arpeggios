@@ -8,24 +8,7 @@ if (window.Worker) {
   worker = new Worker();
 }
 
-const handleNoteSelect = e => {
-  e.preventDefault();
-  if (e.target.matches('a')) {
-    worker.postMessage({
-      type: 'change',
-      value: e.target.getAttribute('data-note'),
-    }); // Send data to our worker.
-
-    if (e.target.classList.contains(activeClassName)) {
-      e.target.classList.remove(activeClassName);
-    } else {
-      e.target.classList.add(activeClassName);
-    }
-  }
-};
-
 const handleKeyChange = (currentIndex) => {
-  console.log(currentIndex);
   currentEl.innerHTML = noteObj[notes[currentIndex]];
   let notesCopy = [...notes];
   let notesFromKey = [...notesCopy.splice(currentIndex, 12), ...notesCopy];
@@ -36,8 +19,8 @@ const handleKeyChange = (currentIndex) => {
   if (window.Worker) {
     worker.postMessage({
       type: 'keyChange',
-      value: noteObj[notes[currentIndex]],
-    }); // Send data to our worker.
+      value: currentIndex,
+    });
   }
 };
 
@@ -53,7 +36,7 @@ const scaleDegrees = () => {
     worker.addEventListener(
       'message',
       e => {
-        selectedNotes = e.data;
+        console.log('test');
       },
       false
     );
