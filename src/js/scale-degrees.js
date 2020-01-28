@@ -1,8 +1,11 @@
 import Worker from '../scale-degrees.worker';
 import { noteObj, degrees } from './scale-degrees.constants';
-let worker;
 const currentEl = document.querySelector('.key__current');
+const navNext = document.querySelector('.key__nav--next');
+const navPrev = document.querySelector('.key__nav--previous');
 const notes = Object.keys(noteObj);
+const disabledClass = 'is-disabled';
+let worker;
 
 if (window.Worker) {
   worker = new Worker();
@@ -10,6 +13,15 @@ if (window.Worker) {
 
 const handleKeyChange = (currentIndex) => {
   currentEl.innerHTML = noteObj[notes[currentIndex]];
+
+  if (currentIndex === 0) {
+    navPrev.classList.add(disabledClass);
+  } else if(currentIndex === 11) {
+    navNext.classList.add(disabledClass);
+  } else {
+    navNext.classList.remove(disabledClass);
+    navPrev.classList.remove(disabledClass);
+  }
 
   if (window.Worker) {
     worker.postMessage({
@@ -21,6 +33,7 @@ const handleKeyChange = (currentIndex) => {
 
 const scaleDegrees = () => {
   let currentIndex = 0;
+  navPrev.classList.add(disabledClass);
 
   currentEl.innerHTML = noteObj[notes[currentIndex]];
   notes.forEach((item, index) => {

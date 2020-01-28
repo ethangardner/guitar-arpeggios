@@ -37,6 +37,10 @@
 	height: 0;
 }
 
+.key__nav--previous.is-disabled:after {
+  border-bottom-color: #e6e2e2;
+}
+
 .key__nav--next:after {
 	border-top: 14px solid #666b6f;
 	border-bottom: 14px solid transparent;
@@ -49,4 +53,8 @@
 	top: 0;
 	width: 0;
 	height: 0;
+}
+
+.key__nav--next.is-disabled:after {
+  border-top-color: #e6e2e2;
 }
