@@ -19,7 +19,6 @@ var handleKeyChange = function(e) {
   var notesCopy = notes.slice(0, 12);
 
   var notesFromKey = notesCopy.splice(position, 12).concat(notesCopy);
-  console.log(notesFromKey);
   return notesFromKey;
 };
 

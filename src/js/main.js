@@ -29,15 +29,17 @@ const handleClear = e => {
     });
   }
 
-  worker.postMessage({
-    type: 'reset',
-    value: selectedNotes,
-  });
+  if (window.Worker) {
+    worker.postMessage({
+      type: 'reset',
+      value: selectedNotes,
+    });
+  }
 };
 
 const handleNoteSelect = e => {
   e.preventDefault();
-  if (e.target.matches('a')) {
+  if (e.target.matches('a') && window.Worker) {
     worker.postMessage({
       type: 'change',
       value: e.target.getAttribute('data-note'),

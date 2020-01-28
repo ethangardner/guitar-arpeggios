@@ -10,11 +10,6 @@ if (window.Worker) {
 
 const handleKeyChange = (currentIndex) => {
   currentEl.innerHTML = noteObj[notes[currentIndex]];
-  let notesCopy = [...notes];
-  let notesFromKey = [...notesCopy.splice(currentIndex, 12), ...notesCopy];
-  notesFromKey.forEach((item, index) => {
-    document.querySelector('.degree--' + item).innerHTML = degrees[index];
-  });
 
   if (window.Worker) {
     worker.postMessage({
@@ -36,7 +31,9 @@ const scaleDegrees = () => {
     worker.addEventListener(
       'message',
       e => {
-        console.log('test');
+        e.data.forEach((item, index) => {
+          document.querySelector('.degree--' + item).innerHTML = degrees[index];
+        });
       },
       false
     );
