@@ -29,6 +29,13 @@ const handleKeyChange = (currentIndex) => {
       value: currentIndex,
     });
   }
+
+  if (typeof window.gtag !== 'undefined') {
+    gtag('event', 'keyChange', {
+      'event_category' : 'form',
+      'event_label' : 'guitar arpeggio'
+    });
+  }
 };
 
 const scaleDegrees = () => {

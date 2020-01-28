@@ -58,3 +58,7 @@
 .key__nav--next.is-disabled:after {
   border-top-color: #e6e2e2;
 }
+
+.key__nav.is-disabled {
+  cursor: not-allowed;
+}
